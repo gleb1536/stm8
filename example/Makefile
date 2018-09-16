@@ -1,6 +1,6 @@
 CC=sdcc
 CFLAGS=-mstm8 
-INCLUDEPATH=STM8S_StdPeriph_Lib_V2.1.0/Libraries/STM8S_StdPeriph_Driver/inc/
+INCLUDEPATH=../lib/STM8S_StdPeriph_Lib_V2.1.0/Libraries/STM8S_StdPeriph_Driver/inc/
 DEFINES= STM8S003
 SOURCE=leds
 OUTPUT_DIR=build/
@@ -9,6 +9,7 @@ all: flash
 compile:
 	mkdir -p $(OUTPUT_DIR)
 	$(CC) $(CFLAGS) -I $(INCLUDEPATH) -D $(DEFINES) -o $(OUTPUT_DIR) $(SOURCE).c 
+	 size  ../example/build/leds.ihx
 
 prepare:
 	packihx $(OUTPUT_DIR)/$(SOURCE).ihx > $(OUTPUT_DIR)/$(SOURCE).hex	
